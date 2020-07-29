@@ -1,0 +1,8 @@
+Install Django:
+python -m pip install django
+Create a Project :
+django-admin startproject blog
+Create a App:
+python manage.py startapp appname
+Run Django File:
+python manage.py runserver
