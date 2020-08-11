@@ -6,3 +6,9 @@ Create a App:
 python manage.py startapp appname
 Run Django File:
 python manage.py runserver
+Create DB Change:
+python manage.py makemigrations
+Migration:
+python manage.py migrate
+Super User:
+python manage.py createsuperuser

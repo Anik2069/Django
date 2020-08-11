@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('food_donation/',include('food_doner.urls')), #inclede korle url pawa jai
+    path('',include('food_doner.urls')), #inclede korle url pawa jai
 ]
