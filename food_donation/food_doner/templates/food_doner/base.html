@@ -31,11 +31,13 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="{% url 'food_donation' %}">Home</a>
+                       <a class="nav-item nav-link" href="{% url 'food_donation' %}">Donor List</a>
+                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Voluntiar List</a>
                     <a class="nav-item nav-link" href="{% url 'food_donation' %}">About</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                    {% if user.is_authenticated %}
+                  {% comment %}  {% if user.is_authenticated %}{% endcomment %}
 {% comment %}
                                                 <a class="nav-item nav-link" href="/post/new/">Create New Post</a>
 {% endcomment %}
@@ -44,10 +46,12 @@
 
                         <a class="nav-item nav-link" href="{% url 'food_donation' %}">Log out</a>
 
+{% comment %}
                     {% else %}
-                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Register</a>
-                    {% endif %}
+{% endcomment %}
+                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Login as Volutentiar</a>
+                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Login as  Food Doner</a>
+                   {% comment %} {% endif %}{% endcomment %}
                 </div>
             </div>
         </div>
