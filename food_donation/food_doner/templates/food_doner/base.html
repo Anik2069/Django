@@ -37,21 +37,18 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                  {% comment %}  {% if user.is_authenticated %}{% endcomment %}
-{% comment %}
+                    {% if user.is_authenticated %}
                                                 <a class="nav-item nav-link" href="/post/new/">Create New Post</a>
-{% endcomment %}
+
 
                         <a class="nav-item nav-link" href="{% url 'food_donation' %}">Profile</a>
 
-                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Log out</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
 
-{% comment %}
                     {% else %}
-{% endcomment %}
                         <a class="nav-item nav-link" href="{% url 'food_donation' %}">Login as Volutentiar</a>
-                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Login as  Food Doner</a>
-                   {% comment %} {% endif %}{% endcomment %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login as  Food Doner</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

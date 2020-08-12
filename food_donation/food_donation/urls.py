@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('food_doner.urls')), #inclede korle url pawa jai
     path('login/',auth_views.LoginView.as_view(template_name='food_doner/login.html'),name='login'),
-    path('logout/',auth_views.LoginView.as_view('food_doner/logout.html'),name='logout')
+    path('logout/',auth_views.LogoutView.as_view(template_name='food_doner/logout.html'),name='logout'),
 
 
 ]

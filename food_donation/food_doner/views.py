@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Doner_Post
+from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm
@@ -21,3 +22,6 @@ def register(request):
     else:
         form = UserRegisterForm()
     return  render(request,'food_doner/register.html',{'form': form});
+@login_required
+def profile(request):
+    return  render(request,'food_doner/profile.html');
