@@ -2,7 +2,7 @@
 {% block content %}
     {% for post in posts %}
         <article class="media content-section">
-            <img class="rounded-circle article-img" src="">
+            <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" alt = "No Image Found">
             <div class="media-body">
                 <div class="article-metadata">
 {% comment %}
