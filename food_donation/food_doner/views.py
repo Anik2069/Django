@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 from .models import Doner_Post
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.forms import UserCreationForm
-
+from voluntiar.models import volentiar
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.views.generic import ListView,DetailView,CreateView,UpdateView, DeleteView
@@ -35,7 +36,15 @@ class PostListView (ListView):
     template_name = "food_doner/home.html"
     context_object_name = 'posts'
     ordering = ['-date_posted']
+class PostListView1 (ListView):
+    model = User
+    template_name = "food_doner/showall.html"
+    context_object_name = 'posts'
 
+class PostListView2 (ListView):
+    model = volentiar
+    template_name = "food_doner/showall2.html"
+    context_object_name = 'posts'
 class PostView (DetailView):
     model = Doner_Post
     template_name = "food_doner/post_view.html"

@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'food_doner/main.css' %}">
 
     {% if title %}
-       {% comment %} <title>Anik Blog - {{ title }}</title>{% endcomment %}
+        {% comment %} <title>Anik Blog - {{ title }}</title>{% endcomment %}
     {% else %}
         <title>Cars for Dogs</title>
     {% endif %}
@@ -23,33 +23,19 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'food_donation' %}">Cars For Dogs</a>
+            <a class="navbar-brand mr-4" href="{% url 'volentiar_home' %}">Cars For Dogs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'food_donation' %}">Home</a>
-                       <a class="nav-item nav-link" href="{% url 'showall' %}">Donor List</a>
-                        <a class="nav-item nav-link" href="{% url 'showall2' %}">volunteer List</a>
+                    <a class="nav-item nav-link" href="{% url 'volentiar_home' %}">Home</a>
 
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'mypost' %}">My Donation Post</a>
-                                                <a class="nav-item nav-link" href="/post/new/">Create New Post</a>
-
-
-                        <a class="nav-item nav-link" href="{% url 'food_donation' %}">Profile</a>
-
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
-
-                    {% else %}
-                        <a class="nav-item nav-link" href="{% url 'Login_Voluntiar' %}">Login as volunteer</a>
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login as  Food Doner</a>
-                    {% endif %}
+                    <a class="nav-item nav-link" href="{% url 'food_donation' %}">Log Out</a>
                 </div>
             </div>
         </div>
