@@ -1,10 +1,16 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+
 from .models import Doner_Post
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.views.generic import ListView,DetailView,CreateView,UpdateView, DeleteView
+
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 # Create your views here.
 def home(request):
     context = {
@@ -22,6 +28,59 @@ def register(request):
     else:
         form = UserRegisterForm()
     return  render(request,'food_doner/register.html',{'form': form});
+
+
+class PostListView (ListView):
+    model = Doner_Post
+    template_name = "food_doner/home.html"
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+class PostView (DetailView):
+    model = Doner_Post
+    template_name = "food_doner/post_view.html"
+
+class PostDelView (LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Doner_Post
+    success_url = '/'
+    template_name = "food_doner/post_Delete.html"
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.username:
+            return True
+        return False
+
+class PostCreateView(LoginRequiredMixin,CreateView):
+    model = Doner_Post
+    fields = ['date','title','food_des']
+    template_name = 'food_doner/post_form.html'
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    model = Doner_Post
+    fields = ['date','title','food_des']
+    template_name = 'food_doner/post_form.html'
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.username:
+            return True
+        return False
+
+
+class UserPostList(LoginRequiredMixin, ListView):
+    context_object_name = 'posts'
+    template_name = 'doner_post_list.html'
+
+    def get_queryset(self):
+        return Doner_Post.objects.filter(username=self.request.user)
+
 @login_required
 def profile(request):
     if request.method == 'POST':

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'food_doner.apps.FoodDonerConfig',
+    'voluntiar.apps.VoluntiarConfig',
     'django.contrib.admin',
     'crispy_forms',
     'django.contrib.auth',
